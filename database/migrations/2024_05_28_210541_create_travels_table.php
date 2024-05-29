@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('travels', function (Blueprint $table) {
-            $table->id();
+        Schema::create('travels', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->boolean('is_public')->default(false);
             $table->string('slug')->unique();
             $table->string('name');
@@ -27,8 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('travels', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('travel');
     }
 };
